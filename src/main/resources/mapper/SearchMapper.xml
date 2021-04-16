@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bym.work.work416.mapper.SearchMapper">
+
+    <select id="hotword" resultType="string">
+            select word FROM search_hotword ORDER BY createTime DESC LIMIT 10
+    </select>
+    <select id="words" resultType="com.bym.work.work416.entity.SearchWords" parameterType="string">
+        select sn,word,hits FROM search_words WHERE word LIKE concat('%',#{word},'%') ORDER BY hits DESC LIMIT 20
+    </select>
+</mapper>
